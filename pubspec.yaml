@@ -1,0 +1,36 @@
+name: mtm
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.16.0-80.1.beta <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.1
+  flutter: 
+    sdk: flutter
+  neon: ^0.1.0
+
+dev_dependencies: 
+  flutter_lints: ^1.0.0
+  lints: 1.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - .env
+
+  fonts:
+    - family: Ar
+      fonts:
+        - asset: assets/fonts/ar.ttf
+    
+    - family: En
+      fonts:
+        - asset: assets/fonts/en.ttf
+
