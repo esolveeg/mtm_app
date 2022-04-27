@@ -63,7 +63,7 @@ class HomeView extends GetView<HomeController> {
                       ),
                       // Text("asdasdasd")
                     ]),
-                SizedBox(height: 30),
+                SizedBox(height: 90),
                 // vertical services
                 Row(
                   children: [
@@ -77,7 +77,7 @@ class HomeView extends GetView<HomeController> {
                         context, "assets/images/settings.png", "ask".tr),
                   ],
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 90),
                 Stack(
                   children: <Widget>[
                     CustomGradientContainer(
@@ -183,7 +183,7 @@ class Hr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: EdgeInsets.symmetric(vertical: 20),
       height: 1.5,
       width: 120,
       decoration: BoxDecoration(

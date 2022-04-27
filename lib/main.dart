@@ -19,8 +19,8 @@ void main() {
         fontFamily: 'En',
         dividerColor: Colors.black,
         textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Color(0xffbdc1c6)),
-          bodyText1: TextStyle(fontSize: 16.0,color: Color(0xffbdc1c6)),
+          headline1: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Color(0xffbdc1c6)),
+          bodyText1: TextStyle(fontSize: 22.0,color: Color(0xffbdc1c6)),
         ),
       ),
       getPages: AppPages.routes,
