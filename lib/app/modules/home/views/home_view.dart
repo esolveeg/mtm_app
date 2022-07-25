@@ -1,142 +1,179 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mtm/app/components/SlideIn.dart';
+import 'package:mtm/app/components/logo.dart';
+import 'package:mtm/app/components/main_container.dart';
 import 'package:mtm/app/utils/gredient_contaienr.dart';
 import '../controllers/home_controller.dart';
 import 'package:mtm/app/components/icon_text.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 
 class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Image(
-          image: AssetImage("assets/images/logo.png"),
-          width: 90,
-        ),
+        title:Logo(),
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-            gradient: RadialGradient(
-          center: Alignment(-0.3, -0.9), // near the top right
-          radius: 0.8,
-          colors: <Color>[
-            Color(0xFF433e4c),
-            Color(0xFF222222),
-            Color(0xFF111111),
-          ],
-          stops: <double>[0.2, 0.7, 1.0],
-        )),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              top: 100,
-              left: 20,
-              right: 20,
-              bottom: 20,
-            ),
+      body: MainContainer(
+          child: SingleChildScrollView(
             child: Container(
-                child: Column(
-              children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(children: [
-                        
-                        iconTextWidget(context, "assets/images/services.png",
-                            "services".tr),
-                        Hr(),
-                        iconTextWidget(
-                            context, "assets/images/offers.png", "offers".tr),
-                        Hr(),
-                        iconTextWidget(
-                            context, "assets/images/ask.png", "ask".tr),
-                      ]),
-                      Image(
-                        image: AssetImage('assets/images/counter.png'),
-                        width: MediaQuery.of(context).size.width * .4,
-                      ),
-                      // Text("asdasdasd")
-                    ]),
-                SizedBox(height: 90),
-                // vertical services
-                Row(
-                  children: [
-                    iconTextWidgetVertical(
-                        context, "assets/images/videos.png", "videos".tr),
-                    SizedBox(width: 15),
-                    iconTextWidgetVertical(
-                        context, "assets/images/articles.png", "articles".tr),
-                    SizedBox(width: 15),
-                    iconTextWidgetVertical(
-                        context, "assets/images/settings.png", "ask".tr),
-                  ],
-                ),
-                SizedBox(height: 90),
-                Stack(
-                  children: <Widget>[
-                    CustomGradientContainer(
-                      bRadius: 10,
-                      strokeWidth: 2,
-                      gradient:
-                          LinearGradient(begin: Alignment.bottomRight, stops: [
-                        0.1,
-                        0.4,
-                        0.9
-                      ], colors: [
-                        Colors.grey.shade400.withOpacity(.5),
-                        Colors.grey.shade800.withOpacity(.4),
-                        Colors.grey.shade700.withOpacity(.5),
-                      ]),
-                      child: Container(
-                        width: double.infinity,
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              Image(
-                                image: AssetImage('assets/images/videos.png'),
-                                height: 70,
-                              ),
-                              Text("checkup".tr,
-                                  style: Theme.of(context).textTheme.bodyText1)
-                            ],
+              padding: EdgeInsets.only(top:100),
+                  child: Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(children: [
+                          SlideIn(
+                            ltr: true,
+                            child: iconTextWidget(context,
+                                "assets/images/services.png", "services".tr),
                           ),
-                        ),
-                      ),
-                    ),
-                    new Align(
-                      alignment: Alignment.centerRight,
-                      child: Transform.translate(
-                        offset: Offset(10, -1),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xff111111),
-                              borderRadius: BorderRadius.circular(25)),
+                          Hr(),
+                          SlideIn(
+                              ltr: true,
+                              child: iconTextWidget(context,
+                                  "assets/images/offer.png", "offers".tr)),
+                          Hr(),
+                          SlideIn(
+                              ltr: true,
+                              child: iconTextWidget(
+                                  context, "assets/images/ask.png", "ask".tr)),
+                        ]),
+                        SlideIn(
                           child: Image(
-                            image: AssetImage('assets/images/car.png'),
-                            height: 130,
-                            width: MediaQuery.of(context).size.width * .45,
+                            image: AssetImage('assets/images/header.png'),
+                            width: MediaQuery.of(context).size.width * .42,
+                          ),
+                        ),
+                        // Text("asdasdasd")
+                      ]),
+                  SizedBox(height: 90),
+                  // vertical services
+                  Row(
+                    children: [
+                      SlideIn(
+                        delay:Duration(milliseconds:1000),
+                        vertical: true,
+                        child: iconTextWidgetVertical(
+                            context, "assets/images/videos.png", "videos".tr),
+                      ),
+                      SizedBox(width: 15),
+                      GestureDetector(
+                        onTap: () {
+                          print("Asdasd");
+                          Get.toNamed('/login');
+                        },
+                        child: SlideIn(
+                          delay:Duration(milliseconds:1100),
+                          vertical: true,
+                          child: iconTextWidgetVertical(context,
+                              "assets/images/articles.png", "articles".tr),
+                        ),
+                      ),
+                      SizedBox(width: 15),
+                      SlideIn(
+                        delay:Duration(milliseconds:1200),
+                        vertical: true,
+                        child: iconTextWidgetVertical(
+                            context, "assets/images/centers.png", "centers".tr),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 90),
+                  Stack(
+                    children: <Widget>[
+                      SlideIn(
+                              delay:Duration(milliseconds:1800),
+
+                        ltr: true,
+                        child: CustomGradientContainer(
+                          bRadius: 10,
+                          strokeWidth: 1,
+                          gradient: LinearGradient(
+                              begin: Alignment.bottomRight,
+                              stops: [
+                                0.1,
+                                0.45
+                              ],
+                              colors: [
+                                Color(0xff292b32).withOpacity(.6),
+                                Color(0xff202227).withOpacity(.8),
+                              ]),
+                          child: SlideIn(
+                              delay:Duration(milliseconds:1900),
+
+                        ltr: true,
+                            child: Container(
+                              width: double.infinity,
+                              alignment: Alignment.centerLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Image(
+                                      image:
+                                          AssetImage('assets/images/checkup.png'),
+                                      height: 70,
+                                    ),
+                                    Text("checkup".tr,
+                                        style:
+                                            Theme.of(context).textTheme.bodyText2)
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    )
-                  ],
-                ),
-              ],
-            )),
-          ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Transform.translate(
+                          offset: Offset(2, -1),
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color(0xff010001),
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: SlideIn(
+                              delay:Duration(milliseconds:2100),
+
+                                child: Image(
+                                  image: AssetImage('assets/images/car.png'),
+                                  height: 130,
+                                  width:
+                                      MediaQuery.of(context).size.width * .45,
+                                ),
+                              )),
+                        ),
+                      ),
+                      // Align(
+                      //   alignment: Alignment.bottomCenter,
+                      //   child: Transform.translate(
+                      //     offset: Offset(-12, 85),
+                      //     child: Container(
+                      //           color: Color(0xff010001),
+                      //           width: 40,
+                      //           height: 30,
+
+                      //     ),
+                      //   ),)
+                    ],
+                  ),
+                ],
+              )),
+            ),
+          
         ),
-      ),
+      
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFF111111),
+        backgroundColor: Color(0xff010001),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white.withOpacity(.60),
         selectedFontSize: 14,
@@ -146,27 +183,35 @@ class HomeView extends GetView<HomeController> {
         },
         items: [
           BottomNavigationBarItem(
-            label: 'home'.tr,
-            icon: Icon(Icons.roofing),
+            label: '',
+            icon: SlideIn(vertical: true, child: Icon(Icons.roofing)),
           ),
           BottomNavigationBarItem(
-            label: 'offers',
-            icon: Icon(Icons.music_note),
+            label: '',
+            icon: SlideIn(
+                vertical: true, child: Icon(Icons.local_fire_department)),
           ),
           BottomNavigationBarItem(
-            label: 'ask'.tr,
-            icon: Icon(Icons.add_circle_outline),
+            label: '',
+            icon:
+                SlideIn(vertical: true, child: Icon(Icons.add_circle_outline)),
           ),
           BottomNavigationBarItem(
-            label: 'profile'.tr,
-            icon: Icon(
-              Icons.person_outline,
+            label: '',
+            icon: SlideIn(
+              vertical: true,
+              child: Icon(
+                Icons.person_outline,
+              ),
             ),
           ),
           BottomNavigationBarItem(
-            label: 'menu'.tr,
-            icon: Icon(
-              Icons.menu_outlined,
+            label: '',
+            icon: SlideIn(
+              vertical: true,
+              child: Icon(
+                Icons.menu_outlined,
+              ),
             ),
           )
         ],
@@ -182,20 +227,21 @@ class Hr extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
-      height: 1.5,
-      width: 120,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
-          0.1,
-          0.4,
-          0.9
-        ], colors: [
-          Colors.grey.shade900.withOpacity(.9),
-          Colors.black.withOpacity(.9),
-          Colors.grey.shade700.withOpacity(.9),
-        ]),
+    return SlideIn(
+      ltr: true,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 20),
+        height: 2,
+        width: 120,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
+            0.1,
+            0.4
+          ], colors: [
+            Color(0xff060507).withOpacity(.6),
+            Color(0xff202227).withOpacity(.8),
+          ]),
+        ),
       ),
     );
   }
