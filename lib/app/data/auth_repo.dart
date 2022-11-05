@@ -18,4 +18,14 @@ class AuthRepo{
 
     return true;
   }
+  Future<bool> register(LoginRequest data) async{
+    provider.loginApi(data).then((body) {
+      return true;
+    }).catchError((err){
+      print(err);
+      return false;
+    });
+
+    return true;
+  }
 }

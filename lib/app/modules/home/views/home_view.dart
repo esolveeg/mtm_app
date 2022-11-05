@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:mtm/app/components/SlideIn.dart';
+import 'package:mtm/app/components/hr.dart';
 import 'package:mtm/app/components/logo.dart';
 import 'package:mtm/app/components/main_container.dart';
+import 'package:mtm/app/components/bottom_nav.dart';
 import 'package:mtm/app/utils/gredient_contaienr.dart';
 import '../controllers/home_controller.dart';
 import 'package:mtm/app/components/icon_text.dart';
@@ -34,12 +36,12 @@ class HomeView extends GetView<HomeController> {
                             child: iconTextWidget(context,
                                 "assets/images/services.png", "services".tr),
                           ),
-                          Hr(),
+                          Hr(width: 120,),
                           SlideIn(
                               ltr: true,
                               child: iconTextWidget(context,
                                   "assets/images/offer.png", "offers".tr)),
-                          Hr(),
+                          Hr(width: 120,),
                           SlideIn(
                               ltr: true,
                               child: iconTextWidget(
@@ -57,17 +59,23 @@ class HomeView extends GetView<HomeController> {
                   // vertical services
                   Row(
                     children: [
-                      SlideIn(
-                        delay:Duration(milliseconds:1000),
-                        vertical: true,
-                        child: iconTextWidgetVertical(
-                            context, "assets/images/videos.png", "videos".tr),
+                      GestureDetector(
+                        onTap: () {
+                          print("Asdasd");
+                          Get.toNamed('/videos');
+                        },
+                        child: SlideIn(
+                          delay:Duration(milliseconds:1000),
+                          vertical: true,
+                          child: iconTextWidgetVertical(
+                              context, "assets/images/videos.png", "videos".tr),
+                        ),
                       ),
                       SizedBox(width: 15),
                       GestureDetector(
                         onTap: () {
                           print("Asdasd");
-                          Get.toNamed('/login');
+                          Get.toNamed('/articles');
                         },
                         child: SlideIn(
                           delay:Duration(milliseconds:1100),
@@ -77,12 +85,17 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       SizedBox(width: 15),
-                      SlideIn(
+                       GestureDetector(
+                        onTap: () {
+                          print("Asdasd");
+                          Get.toNamed('/centers');
+                        },
+                        child : SlideIn(
                         delay:Duration(milliseconds:1200),
                         vertical: true,
                         child: iconTextWidgetVertical(
                             context, "assets/images/centers.png", "centers".tr),
-                      ),
+                       )),
                     ],
                   ),
 
@@ -171,78 +184,7 @@ class HomeView extends GetView<HomeController> {
           
         ),
       
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xff010001),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withOpacity(.60),
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        onTap: (value) {
-          // Respond to item press.
-        },
-        items: [
-          BottomNavigationBarItem(
-            label: '',
-            icon: SlideIn(vertical: true, child: Icon(Icons.roofing)),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: SlideIn(
-                vertical: true, child: Icon(Icons.local_fire_department)),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon:
-                SlideIn(vertical: true, child: Icon(Icons.add_circle_outline)),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: SlideIn(
-              vertical: true,
-              child: Icon(
-                Icons.person_outline,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: SlideIn(
-              vertical: true,
-              child: Icon(
-                Icons.menu_outlined,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class Hr extends StatelessWidget {
-  const Hr({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SlideIn(
-      ltr: true,
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        height: 2,
-        width: 120,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(begin: Alignment.bottomRight, stops: [
-            0.1,
-            0.4
-          ], colors: [
-            Color(0xff060507).withOpacity(.6),
-            Color(0xff202227).withOpacity(.8),
-          ]),
-        ),
-      ),
+      bottomNavigationBar: BottomNav(),
     );
   }
 }

@@ -24,7 +24,7 @@ void main() async {
         fontFamily: 'En',
         dividerColor: Colors.black,
         textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Color(0xff807d85)),
+          headline1: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, color: Color(0xffffffff)),
           bodyText1: TextStyle(fontSize: 16,color: Color(0xff807d85)),
           bodyText2: TextStyle(fontSize: 12.5,color: Color(0xff807d85)),
         ),

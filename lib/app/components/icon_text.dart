@@ -41,7 +41,7 @@ Widget iconTextWidgetVertical(
             image: AssetImage(imagePath),
             height: 90,
           ),
-          Text(service, style: Theme.of(context).textTheme.bodyText2)
+          Text(service, style: Theme.of(context).textTheme.headline1)
         ],
       ),
     ),

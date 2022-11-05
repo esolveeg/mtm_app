@@ -15,6 +15,7 @@ class LocaleString extends Translations{
       "3m" : "3 Months",
       "1m" : "1 Month",
       "dont_have_account" : "don't have account? Register",
+      "already_have_an_account" : "already have an account? Login",
       "1y" : "1 Year",
       "free" : "Free",
       "car_name" : "Car Name",

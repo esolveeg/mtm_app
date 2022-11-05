@@ -15,6 +15,8 @@ dependencies:
   show_up_animation: ^2.0.0
   flutter_native_splash: ^2.1.6
   flutter_dotenv: ^5.0.2
+  youtube_player_flutter: ^8.1.0
+  url_launcher: ^6.1.6
 
 dev_dependencies: 
   flutter_lints: ^1.0.0

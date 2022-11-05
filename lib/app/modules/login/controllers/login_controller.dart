@@ -12,6 +12,7 @@ class LoginController extends GetxController {
   void submit() async{
     LoginRequest req = LoginRequest(username: phoneController.text, password: passwordController.text);
     bool loggedIn = await repo.login(req);
+    Get.offAllNamed("/home");
     print(loggedIn);
   }
   void navigateHome(){
